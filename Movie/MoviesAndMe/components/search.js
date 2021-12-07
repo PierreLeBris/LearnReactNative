@@ -1,7 +1,7 @@
-import React, { Component} from 'react'
-import FilmsData from '../Helpers/FilmsData'
-import FilmItem from './FilmItem'
-import { StyleSheet, View, Button, TextInput, Text, FlatList } from 'react-native'
+import React, { Component} from 'react';
+import films from '../Helpers/filmsData';
+import FilmItem from './FilmItem';
+import { StyleSheet, View, Button, TextInput, Text, FlatList } from 'react-native';
 
 class Search extends React.Component {
     render() {
@@ -11,8 +11,7 @@ class Search extends React.Component {
                 <Button style={{ height: 50 }} title='Button' onPress={() => {}}/>
                 <FlatList
                     data={films}
-                    keyExtractor={(item) => item.id.toString()}
-                    renderItem={({item}) => <FilmItem/>}
+                    renderItem={({item}) => <Text>{item.title}</Text>}
                 />
             </View>
         )
