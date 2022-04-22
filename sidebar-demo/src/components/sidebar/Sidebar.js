@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RiMenuLine, RiLayoutGridFill, RiChat2Fill, RiTeamFill, RiTaskFill, RiPieChart2Fill } from 'react-icons/ri';
-import Agenda from '../react-agenda/example/src/agenda/agenda.js';
 import './Sidebar.css';
 
 function Sidebar() {
+
+    const sidebarCollapsed = localStorage.getItem('sidebar-Collapsed');
+    const [isExpanded, setIsExpanded] = useState(sidebarCollapsed ? false : true);
+
+    const handleToggler = () => {
+        if(isExpanded) {
+            setIsExpanded(false);
+            localStorage.setItem('sidebar-Collapsed', true);
+            return;
+        }
+        setIsExpanded(true);
+        localStorage.removeItem('sidebar-Collapsed');
+    };
+
     return (
-        <div className='Sidebar'>
+        <div className={isExpanded ? 'Sidebar' : 'Sidebar collapsed'}>
             <div className='sidebar-header'>
-                <RiMenuLine className='sidebar-icon'/>
+                <RiMenuLine 
+                    className='sidebar-icon'
+                    onClick={handleToggler}
+                />
                 <h1 className='sidebar-logo'>LOGO</h1>
             </div>
         <div className='sidebar-items'>
@@ -32,7 +48,6 @@ function Sidebar() {
                 <span className='sidebar-text'>Analitics</span>
             </div>
         </div>
-        <Agenda></Agenda>
     </div>
     );
 }
