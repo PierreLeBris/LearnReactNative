@@ -856,7 +856,6 @@ const DashbordProprio-Tempsréel: React.VFC = () => {
       </div>
     )
   }
-  
   .dashbord-proprio---tempsréel {
     height: 1080px;
     width: 1920px;
