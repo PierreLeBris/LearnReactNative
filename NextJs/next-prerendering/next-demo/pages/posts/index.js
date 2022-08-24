@@ -1,9 +1,8 @@
-function PostList() {
+function PostList({posts}) {
   return (
     <>
       <h1>List of Posts</h1>
-      {
-        posts.map(post => {
+      {posts.map(post => {
           return (
             <div key={post.id}>
               <h2>
